@@ -19,6 +19,5 @@ func _input(event):
 		var bullet = preload("res://instances/projectile.tscn").instance()
 		
 		bullet.velocity = (bullet_pivot.get_node("Node2D").global_position - bullet_pivot.global_position).normalized()
-		bullet.global_position = bullet_pivot.get_node("Node2D").global_position
 		
-		get_tree().root.get_node("World").add_child(bullet)
+		owner.add_child(bullet)
