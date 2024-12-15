@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,8 +7,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
-
-[sub_resource type="CircleShape2D" id=2]
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -29,7 +27,15 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-smoothing_speed = 8.0
+smoothing_speed = 3.0
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = SubResource( 4 )
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 0
+texture = ExtResource( 2 )
 
 [node name="PawStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -37,17 +43,3 @@ initial_state = "Normal"
 
 [node name="Normal" type="Node" parent="PawStateMachine"]
 script = ExtResource( 4 )
-
-[node name="BulletPivot" type="Node2D" parent="."]
-
-[node name="Node2D" type="Node2D" parent="BulletPivot"]
-position = Vector2( 20, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletPivot/Node2D"]
-shape = SubResource( 2 )
-
-[node name="Light2D" type="Light2D" parent="."]
-texture = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )

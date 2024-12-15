@@ -1,23 +1,25 @@
 extends PawState
 
-onready var bullet_pivot = owner.get_node("BulletPivot")
+onready var bullet = preload("res://instances/bullet/bullet.tscn")
 
 func _physics_process(delta):
+	move_controller()
+	shoot_controller()
+
+func move_controller():
 	var vector = Input.get_vector("p_left", "p_right", "p_up", "p_down")
 	if vector: owner.velocity_static = vector
 	
 	owner.velocity = lerp(owner.velocity, vector * (owner.speed * 10), 0.2)
 	owner.move_and_slide(owner.velocity)
-	
-	var center = get_viewport().get_mouse_position() - get_viewport().size / 2
-	owner.get_node("Camera2D").offset = lerp(owner.get_node("Camera2D").offset, center / 20, 0.1)
-	bullet_pivot.rotation = center.angle()
-	
 
-func _input(event):
-	if event.is_action_pressed("p_action"):
-		var bullet = preload("res://instances/projectile.tscn").instance()
-		
-		bullet.velocity = (bullet_pivot.get_node("Node2D").global_position - bullet_pivot.global_position).normalized()
-		
-		owner.add_child(bullet)
+
+func shoot_controller():
+	var center_offset = (get_viewport().get_mouse_position() - get_viewport().size / 2)
+	owner.get_node("Camera2D").offset = lerp(owner.get_node("Camera2D").offset, center_offset / 20, 0.1)
+	
+	if Input.is_action_just_pressed("p_action"):
+		var bullet_ins = bullet.instance()
+		bullet_ins.velocity = center_offset.normalized()
+		get_tree().root.get_node("World").add_child(bullet_ins)
+		bullet_ins.global_position = owner.global_position

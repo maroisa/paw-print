@@ -8,3 +8,11 @@ signal damaged(val)
 
 func _init():
 	self.connect("damaged", self, "on_damaged")
+
+func damaged(damage: int):
+	health -= 1
+	if health <= 0:
+		die()
+
+func die():
+	print(self.name, " has died")
