@@ -16,10 +16,11 @@ func move_controller():
 
 func shoot_controller():
 	var center_offset = (get_viewport().get_mouse_position() - get_viewport().size / 2)
-	owner.get_node("Camera2D").offset = lerp(owner.get_node("Camera2D").offset, center_offset / 20, 0.1)
+	owner.get_node("Camera2D").offset = lerp(owner.get_node("Camera2D").offset, center_offset / 10, 0.1)
+	owner.get_node("Pivot").position = lerp(owner.get_node("Pivot").position, center_offset.normalized() * 32, 0.25)
 	
 	if Input.is_action_just_pressed("p_action"):
 		var bullet_ins = bullet.instance()
 		bullet_ins.velocity = center_offset.normalized()
 		get_tree().root.get_node("World").add_child(bullet_ins)
-		bullet_ins.global_position = owner.global_position
+		bullet_ins.global_position = owner.get_node("Pivot").global_position

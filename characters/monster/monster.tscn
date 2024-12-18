@@ -12,7 +12,6 @@ health = 99
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="."]
-light_mask = 0
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
