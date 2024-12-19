@@ -51,3 +51,5 @@ func generate_door(vector: Vector2):
 func generate_lock():
 	for i in lock:
 		$PawWall.set_cellv(i, 0)
+	
+	$PawWall.replace()

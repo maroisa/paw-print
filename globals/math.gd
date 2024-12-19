@@ -1,5 +1,12 @@
 extends Node
 
+var soal = []
+
+func _ready():
+	var f = File.new()
+	f.open("res://assets/soal.json", File.READ)
+	soal = parse_json(f.get_as_text())
+
 func kalkulasi(soal: Array):
 	var expr = Expression.new()
 	var soal_text = sum_soal(soal)

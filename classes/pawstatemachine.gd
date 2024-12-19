@@ -9,6 +9,7 @@ func _ready():
 		child.machine = self
 	
 	yield(owner, "ready")
+	
 	state.enter()
 
 func _physics_process(delta):

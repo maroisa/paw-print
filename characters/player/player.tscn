@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://classes/pawstatemachine.gd" type="Script" id=3]
 [ext_resource path="res://characters/player/states/idle.gd" type="Script" id=4]
 [ext_resource path="res://assets/textures/light.png" type="Texture" id=5]
+[ext_resource path="res://characters/player/states/calm.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -13,14 +14,14 @@ extents = Vector2( 20, 20 )
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )
-speed = 26
+speed = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 0.6, 0.6 )
 smoothing_speed = 3.0
 
 [node name="Light2D" type="Light2D" parent="."]
@@ -35,9 +36,12 @@ texture = ExtResource( 2 )
 
 [node name="PawStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
-initial_state = "Normal"
+initial_state = "Calm"
 
-[node name="Normal" type="Node" parent="PawStateMachine"]
+[node name="Combat" type="Node" parent="PawStateMachine"]
 script = ExtResource( 4 )
+
+[node name="Calm" type="Node" parent="PawStateMachine"]
+script = ExtResource( 6 )
 
 [node name="Pivot" type="Node2D" parent="."]

@@ -1,8 +1,8 @@
 extends PawState
 
-onready var bullet = preload("res://instances/bullet/bullet.tscn")
+onready var bullet = preload("res://scenes/bullet.tscn")
 
-func _physics_process(delta):
+func update():
 	move_controller()
 	shoot_controller()
 

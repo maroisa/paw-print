@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://classes/pawwall.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/loona_wall.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/loona_tile.png" type="Texture" id=3]
 [ext_resource path="res://classes/pawroom.gd" type="Script" id=4]
@@ -79,6 +80,9 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
 [sub_resource type="TileSet" id=3]
 0/name = "loona_wall.png 0"
 0/texture = ExtResource( 2 )
@@ -91,9 +95,16 @@ polygon = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 10 )
 0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -111,8 +122,11 @@ format = 1
 z_index = -1
 tile_set = SubResource( 3 )
 format = 1
+script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="Numbers" type="Node" parent="."]

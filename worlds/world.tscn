@@ -1,47 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://worlds/room_controller.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node
-
-var room = preload(\"res://worlds/room.tscn\")
-
-var vectors = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]
-var placed_room = []
-var last_vector = Vector2()
-
-func _ready():
-	randomize()
-	
-	for i in range(5):
-		if !placed_room: placed_room.append(Vector2())
-		
-		var room_ins = room.instance()
-		add_child(room_ins)
-		
-		room_ins.generate_room()
-		
-		var random = vectors[randi() % 4]
-		
-		while random + placed_room[-1] in placed_room:
-			random = vectors[randi() % 4]
-		
-		room_ins.global_position = placed_room[-1] * 1280
-		
-		room_ins.generate_door(random)
-		room_ins.generate_lock()
-		room_ins.generate_door(-last_vector)
-		
-		last_vector = random
-		placed_room.append(random + placed_room[-1])
-		
-"
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-speed = 250
 
 [node name="Rooms" type="Node" parent="."]
-script = SubResource( 1 )
+script = ExtResource( 1 )
