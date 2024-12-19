@@ -30,6 +30,7 @@ func _ready():
 		room_ins.global_position = placed_room[-1] * 1280
 		
 		room_ins.generate_door(random)
+		room_ins.generate_lock()
 		room_ins.generate_door(-last_vector)
 		
 		last_vector = random

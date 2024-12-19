@@ -1,6 +1,8 @@
 extends Node2D
 class_name PawRoom
 
+var lock = []
+
 func generate_room():
 	$TileMap.clear()
 	$PawWall.clear()
@@ -32,10 +34,20 @@ func generate_door(vector: Vector2):
 	
 	for i in range(value[1] * 10, 0, -value[1]):
 		for ii in range(-3, 3):
-			if i == 10: continue
+			if i == 10:
+				continue
 			
 			var selected = [i, ii] if value[0] else [ii, i]
+			if ii in range(-2, 2):
+				if $TileMap.get_cell(selected[0], selected[1]) == 1:
+					lock.append(Vector2(selected[0], selected[1]))
+			
 			if ii == -3 or ii == 2:
 				if $TileMap.get_cell(selected[0], selected[1]) == -1:
 					$TileMap.set_cell(selected[0], selected[1], 1)
+			
 			else: $TileMap.set_cell(selected[0], selected[1], 0)
+
+func generate_lock():
+	for i in lock:
+		$PawWall.set_cellv(i, 0)
