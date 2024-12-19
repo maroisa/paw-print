@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://classes/pawcharacter.gd"
 }, {
+"base": "Node2D",
+"class": "PawRoom",
+"language": "GDScript",
+"path": "res://classes/pawroom.gd"
+}, {
 "base": "Node",
 "class": "PawState",
 "language": "GDScript",
@@ -23,11 +28,18 @@ _global_script_classes=[ {
 "class": "PawStateMachine",
 "language": "GDScript",
 "path": "res://classes/pawstatemachine.gd"
+}, {
+"base": "TileMap",
+"class": "PawWall",
+"language": "GDScript",
+"path": "res://classes/pawwall.gd"
 } ]
 _global_script_class_icons={
 "PawCharacter": "",
+"PawRoom": "",
 "PawState": "",
-"PawStateMachine": ""
+"PawStateMachine": "",
+"PawWall": ""
 }
 
 [application]
