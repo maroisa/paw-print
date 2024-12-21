@@ -1,0 +1,31 @@
+extends PawState
+
+var vector: Vector2
+var velocity: Vector2
+
+const bullet = preload("res://scenes/bullet.tscn")
+
+func update():
+	move_controller()
+	shoot_controller()
+
+func move_controller():
+	vector = Input.get_vector("p_left", "p_right", "p_up", "p_down")
+	
+	if vector:
+		player.velocity_static = vector
+		player.animstate.travel("Walk")
+	else:
+		player.animstate.travel("Idle")
+	
+	velocity = lerp(velocity, vector, 0.16)
+	
+	player.move_and_slide(velocity * player.speed * 10)
+
+func shoot_controller():
+	if Input.is_action_just_pressed("p_action"):
+		var bullet_ins = bullet.instance()
+		add_child(bullet_ins.init(
+			player.get_node("Pivot").global_position,
+			player.center_offset.normalized()
+		))

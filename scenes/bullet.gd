@@ -1,22 +1,30 @@
-extends Node2D
+extends Area2D
 
 var velocity: Vector2
 
 func _ready():
-	$DetectArea/AnimatedSprite.connect("animation_finished", self, "destruct")
-	$DetectArea.connect("body_entered", self, "on_shoot")
+	$DestructTimer.connect("timeout", self, "on_self_destruct")
+	$AnimatedSprite.connect("animation_finished", self, "on_finished")
+	self.connect("body_entered", self, "on_hit")
 
 func _physics_process(delta):
-	$DetectArea.position += velocity * 6
-	if $DetectArea.position.length() >= 300:
-		$DetectArea/AnimatedSprite.play("default")
+	if velocity:
+		self.global_position += velocity * 16
 
-func destruct():
+func init(pos: Vector2, vel: Vector2):
+	self.global_position = pos
+	self.velocity = vel
+	return self
+
+func on_hit(body: Node2D):
+	if body is PawCharacter:
+		body.emit_signal("damaged", 1)
+	
+	$AnimatedSprite.play("default")
+	velocity = Vector2()
+
+func on_finished():
 	self.queue_free()
 
-func on_shoot(body):
-	if body is PawCharacter:
-		body.damaged(1)
-	
-	velocity = Vector2()
-	$DetectArea/AnimatedSprite.play("default")
+func on_self_destruct():
+	$AnimatedSprite.play("default")

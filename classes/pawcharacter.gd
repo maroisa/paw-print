@@ -1,13 +1,13 @@
 extends KinematicBody2D
 class_name PawCharacter
 
-export var health: int = 0
-export var damage: int = 0
+export var health: int = 1
+export var damage: int = 1
 
 signal damaged(val)
 
 func _init():
-	self.connect("damaged", self, "on_damaged")
+	self.connect("damaged", self, "damaged")
 
 func damaged(damage: int):
 	health -= 1
