@@ -6,13 +6,11 @@ onready var player = get_tree().root.get_node("World/Player")
 
 func on_click():
 	if !num_entered: return
-	
-	print("Y")
 	player.machine.state.num_held = num_entered
 
 func on_number_entered(number: Area2D):
 	if player.machine.state.num_held: return
-	set_cursor(Input.CURSOR_DRAG)
+	set_cursor(Input.CURSOR_MOVE)
 	num_entered = number
 
 func on_number_exited(number: Area2D):

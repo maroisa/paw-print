@@ -37,6 +37,11 @@ run/main_scene="res://worlds/world.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
+[autoload]
+
+HUD="*res://globals/hud.tscn"
+Math="*res://globals/math.gd"
+
 [display]
 
 window/size/width=1280

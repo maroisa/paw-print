@@ -3,10 +3,10 @@ extends Node
 var enemy = preload("res://characters/slime/slime.tscn")
 var number = preload("res://scenes/number.tscn")
 
-func generate_enemies(body, area, soal: PoolStringArray):
+func generate_enemies(body, area):
 	area.queue_free()
 	
-	for i in soal:
+	for i in get_parent().soal:
 		var enemy_ins = enemy.instance()
 		var random_vec = Vector2(randi() % 1200 - 600, randi() % 1200 - 600)
 		call_deferred("add_child", enemy_ins.init(get_parent().global_position + random_vec, i))

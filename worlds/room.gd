@@ -2,8 +2,11 @@ extends Node2D
 
 var lock_position: Array
 
+var soal: PoolStringArray = []
+
 func init(soal: PoolStringArray, tilemap_tileset: TileSet, lock_tileset: TileSet):
-	$EnterArea.connect("body_entered", $Enemies, "generate_enemies", [$EnterArea, soal])
+	self.soal = soal
+	$EnterArea.connect("body_entered", $Enemies, "generate_enemies", [$EnterArea])
 	$TileMap.tile_set = tilemap_tileset
 	$LockTileMap.tile_set = lock_tileset
 	return self
