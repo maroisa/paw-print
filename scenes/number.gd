@@ -1,7 +1,5 @@
 extends Area2D
 
-var active = true
-
 var velocity = Vector2()
 
 func init(pos: Vector2, val: String):
@@ -16,4 +14,11 @@ func _physics_process(delta):
 
 func on_hit(body):
 	self.velocity = Vector2()
-	print(body)
+	
+	if body.name == "LockTileMap":
+		get_parent().add($C/Label.text)
+		
+		self.hide()
+		$CollisionShape2D.set_deferred("disabled", true)
+		get_tree().root.get_node("World/Player").machine.state.num_held = null
+

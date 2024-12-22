@@ -1,11 +1,19 @@
 extends Node2D
 
+onready var current_answer_label = $Answer/C/VB/CurrentAnswer
+onready var answer_label = $Answer/C/VB/TrueAnswer
+
 var lock_position: Array
+var locked = false
 
 var soal: PoolStringArray = []
+var jawaban: String
 
 func init(soal: PoolStringArray, tilemap_tileset: TileSet, lock_tileset: TileSet):
+	self.jawaban = soal[-1]
 	self.soal = soal
+	self.soal.resize(soal.size() - 1)
+	
 	$EnterArea.connect("body_entered", $Enemies, "generate_enemies", [$EnterArea])
 	$TileMap.tile_set = tilemap_tileset
 	$LockTileMap.tile_set = lock_tileset
@@ -34,6 +42,9 @@ func generate_hallway(vector: Vector2):
 	var isX = vector.x != 0
 	var selected = Vector2()
 	
+	if !locked: $Answer.position = vector * 600
+	
+	
 	for i in 11:
 		for ii in range(-3, 3):
 			if isX:
@@ -52,5 +63,6 @@ func generate_hallway(vector: Vector2):
 			$TileMap.set_cell(selected.x, selected.y, 0)
 
 func generate_lock():
+	if !locked: locked = true
 	for i in lock_position:
 		$LockTileMap.set_cellv(i, 0)

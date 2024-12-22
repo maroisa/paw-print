@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://worlds/room_enemies_controller.gd" type="Script" id=1]
 [ext_resource path="res://worlds/room_numbers_controller.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/upheaval.tres" type="DynamicFont" id=3]
 [ext_resource path="res://worlds/room.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,3 +33,29 @@ script = ExtResource( 1 )
 
 [node name="Numbers" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="Answer" type="Node2D" parent="."]
+
+[node name="C" type="CenterContainer" parent="Answer"]
+margin_right = 40.0
+margin_bottom = 40.0
+use_top_left = true
+
+[node name="VB" type="HBoxContainer" parent="Answer/C"]
+margin_left = -2.0
+margin_top = -36.0
+margin_right = 2.0
+margin_bottom = 36.0
+custom_constants/separation = 4
+
+[node name="CurrentAnswer" type="Label" parent="Answer/C/VB"]
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.623529, 0.972549, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+
+[node name="TrueAnswer" type="Label" parent="Answer/C/VB"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 0.74902, 0.623529, 1 )
+custom_fonts/font = ExtResource( 3 )

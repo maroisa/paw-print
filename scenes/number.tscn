@@ -10,8 +10,6 @@ radius = 32.0
 collision_layer = 0
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
@@ -22,7 +20,7 @@ mouse_filter = 2
 use_top_left = true
 
 [node name="Label" type="Label" parent="C"]
-margin_top = -29.0
-margin_bottom = 29.0
+margin_top = -36.0
+margin_bottom = 36.0
 mouse_filter = 1
 custom_fonts/font = ExtResource( 1 )
