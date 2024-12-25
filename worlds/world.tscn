@@ -2,9 +2,9 @@
 
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://worlds/room_controller.gd" type="Script" id=2]
-[ext_resource path="res://assets/room0/room0map.tres" type="TileSet" id=3]
-[ext_resource path="res://assets/room0/room0lock.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/room0/room0_tilemap.tres" type="TileSet" id=3]
 [ext_resource path="res://worlds/world.gd" type="Script" id=5]
+[ext_resource path="res://assets/light.png" type="Texture" id=6]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -12,7 +12,22 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 z_index = 1
 
+[node name="Light2D" type="Light2D" parent="Player"]
+texture = ExtResource( 6 )
+texture_scale = 1.5
+energy = 0.8
+shadow_enabled = true
+shadow_gradient_length = 20.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.333333, 0.333333, 0.333333, 1 )
+
 [node name="RoomController" type="Node" parent="."]
 script = ExtResource( 2 )
-tilemap_tileset = ExtResource( 3 )
-lock_tileset = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="RoomController"]
+z_index = -1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -65539, 0, 8, -65538, 0, 10, -65537, 0, 10, -131072, 0, 10, -131071, 0, 10, -131070, 0, 10, -131069, 0, 11, -3, 0, 65544, -2, 0, 131081, -1, 0, 131081, -65536, 0, 131081, -65535, 0, 131081, -65534, 0, 131081, -65533, 0, 131083, 65533, 0, 65544, 65534, 0, 131081, 65535, 0, 131081, 0, 0, 131081, 1, 0, 131081, 2, 0, 131081, 3, 0, 131083, 131069, 0, 196616, 131070, 0, 196617, 131071, 0, 196617, 65536, 0, 196617, 65537, 0, 196617, 65538, 0, 196617, 65539, 0, 196619 )

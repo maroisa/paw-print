@@ -1,13 +1,10 @@
 extends Node2D
 
-const soal = {
-	"0": [
-		["+6", "x9", "+6", "+9", "=69"],
-		["+6", "-2", ">=4"],
-		["+2", "+3", "x3", "=15"],
-		["+7", "-3", "x2", "=8"],
-	]
-}
-
 func _ready():
+	randomize()
+	
+	var f = File.new()
+	f.open("res://assets/soal.json", File.READ)
+	var soal = parse_json(f.get_as_text())
+	
 	$RoomController.init(soal["0"])

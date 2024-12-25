@@ -5,7 +5,7 @@ var velocity = Vector2()
 func init(pos: Vector2, val: String):
 	self.connect("body_entered", self, "on_hit")
 	self.global_position = pos
-	$C/Label.text = val
+	$C/M/Label.text = val
 	return self
 
 func _physics_process(delta):
@@ -15,8 +15,8 @@ func _physics_process(delta):
 func on_hit(body):
 	self.velocity = Vector2()
 	
-	if body.name == "LockTileMap":
-		get_parent().add($C/Label.text)
+	if body.name == "Lock":
+		get_parent().add($C/M/Label.text)
 		
 		self.hide()
 		$CollisionShape2D.set_deferred("disabled", true)

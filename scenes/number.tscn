@@ -19,8 +19,21 @@ margin_bottom = 40.0
 mouse_filter = 2
 use_top_left = true
 
-[node name="Label" type="Label" parent="C"]
-margin_top = -36.0
-margin_bottom = 36.0
+[node name="M" type="MarginContainer" parent="C"]
+margin_left = -88.0
+margin_top = -56.0
+margin_right = 88.0
+margin_bottom = 56.0
 mouse_filter = 1
+custom_constants/margin_right = 30
+custom_constants/margin_top = 20
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="C/M"]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 146.0
+margin_bottom = 92.0
 custom_fonts/font = ExtResource( 1 )
+text = "123"

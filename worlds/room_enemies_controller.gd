@@ -28,7 +28,7 @@ func refresh():
 	
 	for child in get_children():
 		var num_ins = number.instance().init(child.global_position, child.nilai)
-		num_ins.get_node("C/Label").connect("mouse_entered", $"../Numbers", "on_number_entered", [num_ins])
-		num_ins.get_node("C/Label").connect("mouse_exited", $"../Numbers", "on_number_exited", [num_ins])
+		num_ins.get_node("C/M").connect("mouse_entered", $"../Numbers", "on_number_entered", [num_ins])
+		num_ins.get_node("C/M").connect("mouse_exited", $"../Numbers", "on_number_exited", [num_ins])
 		get_parent().get_node("Numbers").call_deferred("add_child", num_ins)
 		child.queue_free()

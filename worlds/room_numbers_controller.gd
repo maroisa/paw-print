@@ -22,7 +22,7 @@ func on_number_exited(number: Area2D):
 
 func set_cursor(cursor):
 	for i in get_children():
-		i.get_node("C/Label").mouse_default_cursor_shape = cursor
+		i.get_node("C/M").mouse_default_cursor_shape = cursor
 # End Object Control
 
 # Number handler
@@ -32,17 +32,18 @@ func add(val):
 	get_parent().current_answer_label.text = jawaban
 	add_count += 1
 	
+	var to_eval = jawaban
+	if get_parent().jawaban[0] == "=": to_eval += "="
+	to_eval += get_parent().jawaban
+	
+	if Math.kalkulasi(to_eval):
+		get_parent().get_node("Lock").queue_free()
+		get_parent().answer_label.set("custom_colors/font_color", Color("9ff8ff"))
+		get_parent().get_node("DestructTimer").start()
+		return
+	
 	if add_count >= get_child_count():
 		for i in get_children(): i.queue_free()
-		
-		var to_eval = jawaban
-		if get_parent().jawaban[0] == "=": to_eval += "="
-		to_eval += get_parent().jawaban
-		
-		if Math.kalkulasi(to_eval):
-			get_parent().get_node("LockTileMap").queue_free()
-			get_parent().answer_label.set("custom_colors/font_color", Color("9ff8ff"))
-			return
 		
 		jawaban = "0"
 		add_count = 0

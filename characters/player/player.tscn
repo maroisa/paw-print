@@ -242,11 +242,13 @@ graph_offset = Vector2( 0, -52.41 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
 [node name="Player" type="KinematicBody2D"]
+light_mask = 2
 collision_layer = 2
 script = ExtResource( 2 )
-speed = 60
+speed = 80
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 3
 texture = ExtResource( 1 )
 offset = Vector2( 0, -64 )
 hframes = 5
@@ -254,7 +256,7 @@ vframes = 20
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.4, 1.4 )
+zoom = Vector2( 1.6, 1.6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
