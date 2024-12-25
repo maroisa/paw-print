@@ -1,31 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://worlds/room_enemies_controller.gd" type="Script" id=1]
 [ext_resource path="res://worlds/room_numbers_controller.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/upheaval.tres" type="DynamicFont" id=3]
 [ext_resource path="res://worlds/room.gd" type="Script" id=4]
 [ext_resource path="res://assets/room0/room0_lock.png" type="Texture" id=5]
-
-[sub_resource type="OccluderPolygon2D" id=10]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=11]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=12]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=13]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=14]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=15]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
-
-[sub_resource type="OccluderPolygon2D" id=16]
-polygon = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
+[ext_resource path="res://assets/room0/room0_lock_normalmap.png" type="Texture" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -51,6 +31,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 [sub_resource type="TileSet" id=2]
 0/name = "room0_lock.png 0"
 0/texture = ExtResource( 5 )
+0/normal_map = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 512, 512 )
@@ -60,7 +41,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 0/autotile/icon_coordinate = Vector2( 0, 0 )
 0/autotile/tile_size = Vector2( 128, 128 )
 0/autotile/spacing = 0
-0/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 10 ), Vector2( 0, 1 ), SubResource( 11 ), Vector2( 0, 2 ), SubResource( 12 ), Vector2( 0, 3 ), SubResource( 13 ), Vector2( 1, 3 ), SubResource( 14 ), Vector2( 2, 3 ), SubResource( 15 ), Vector2( 3, 3 ), SubResource( 16 ) ]
+0/autotile/occluder_map = [  ]
 0/autotile/navpoly_map = [  ]
 0/autotile/priority_map = [  ]
 0/autotile/z_index_map = [  ]
