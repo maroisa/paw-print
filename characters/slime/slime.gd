@@ -60,6 +60,7 @@ func damaged(damage):
 	$Sprite.modulate = Color(1, 1, 1)
 
 func die():
+	$AttackArea.queue_free()
 	player = null
 	$AnimationTree.active = false
 	$CollisionShape2D.set_deferred("disabled", true)
