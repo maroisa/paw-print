@@ -17,3 +17,11 @@ func _physics_process(delta):
 	$Pivot.position = lerp(get_node("Pivot").position, center_offset.normalized() * 100, 0.25)
 	
 	$BookSprite.rotation = $Pivot.position.angle() + PI / 2
+
+func damaged(damage: int):
+	.damaged(damage)
+	
+	machine.travel("Attack")
+
+func die():
+	.die()

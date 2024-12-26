@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://characters/player/player.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://characters/player/states/normal.gd" type="Script" id=4]
 [ext_resource path="res://characters/player/states/calm.gd" type="Script" id=5]
 [ext_resource path="res://characters/player/player_book.png" type="Texture" id=6]
+[ext_resource path="res://characters/player/states/attack.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -244,6 +245,7 @@ graph_offset = Vector2( 0, -52.41 )
 
 [node name="Player" type="KinematicBody2D"]
 light_mask = 2
+z_index = 1
 collision_layer = 2
 script = ExtResource( 2 )
 speed = 60
@@ -281,6 +283,15 @@ parameters/playback = SubResource( 12 )
 parameters/Idle/blend_position = Vector2( 0, 1 )
 parameters/Walk/blend_position = Vector2( 0, 1 )
 
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BookSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+texture = ExtResource( 6 )
+
 [node name="PawStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 initial_state = "Normal"
@@ -291,11 +302,5 @@ script = ExtResource( 4 )
 [node name="Calm" type="Node" parent="PawStateMachine"]
 script = ExtResource( 5 )
 
-[node name="Pivot" type="Node2D" parent="."]
-
-[node name="Tween" type="Tween" parent="."]
-
-[node name="BookSprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-show_behind_parent = true
-texture = ExtResource( 6 )
+[node name="Attack" type="Node" parent="PawStateMachine"]
+script = ExtResource( 7 )

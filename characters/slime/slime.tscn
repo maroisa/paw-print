@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://characters/slime/slime.gd" type="Script" id=1]
 [ext_resource path="res://characters/slime/slime.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=25]
 radius = 32.0
+height = 24.0
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -228,7 +229,12 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
+[sub_resource type="CapsuleShape2D" id=26]
+radius = 34.0
+height = 24.0
+
 [node name="Slime" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 1 )
@@ -240,9 +246,10 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -48 )
 hframes = 5
 vframes = 20
-frame = 4
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource( 25 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -266,3 +273,12 @@ parameters/Move/blend_position = Vector2( 0, 1 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+rotation = 1.5708
+shape = SubResource( 26 )
+disabled = true
