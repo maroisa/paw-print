@@ -7,8 +7,7 @@ const bullet = preload("res://scenes/bullet.tscn")
 
 func enter():
 	var tw: Tween = player.get_node("Tween")
-	var book = player.get_node("Pivot/Sprite")
-	tw.interpolate_property(book, "position", -book.get_parent().position, Vector2(), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	var book = player.get_node("BookSprite")
 	tw.interpolate_property(book, "modulate:a", 0, 1, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	tw.start()
 
@@ -26,6 +25,8 @@ func move_controller():
 		player.animstate.travel("Idle")
 	
 	velocity = lerp(velocity, vector, 0.16)
+	
+	owner.get_node("BookSprite").position = owner.get_node("Pivot").position
 	
 	player.move_and_slide(velocity * player.speed * 10)
 

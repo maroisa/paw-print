@@ -1,4 +1,4 @@
-extends Node
+extends YSort
 
 onready var room = preload("res://worlds/room.tscn")
 
@@ -6,8 +6,6 @@ var vectors: PoolVector2Array = [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), 
 
 var placed_room: PoolVector2Array = [Vector2()]
 var last_vector: Vector2
-
-var locked = false
 
 func init(soal: Array):
 	randomize()

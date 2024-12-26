@@ -1,7 +1,9 @@
-extends Node
+extends YSort
 
-var enemy = preload("res://characters/slime/slime.tscn")
 var number = preload("res://scenes/number.tscn")
+
+var slime = preload("res://characters/slime/slime.tscn")
+var skeleton = preload("res://characters/skeleton/skeleton.tscn")
 
 func generate_enemies(body, area):
 	area.get_node("CollisionShape2D").set_deferred("disabled", true)
@@ -9,10 +11,17 @@ func generate_enemies(body, area):
 	
 	var random_vec: Vector2
 	
+	var enemy_ins: PawCharacter
+	
 	for i in get_parent().soal:
-		var enemy_ins = enemy.instance()
+		if i[0] in ["+", "-"]:
+			enemy_ins = slime.instance()
+		else: enemy_ins = skeleton.instance()
 		random_vec = Vector2(randi() % 1200 - 600, randi() % 1200 - 600)
-		call_deferred("add_child", enemy_ins.init(get_tree().root.get_node("World/Player"), get_parent().global_position + random_vec, i))
+		call_deferred("add_child", enemy_ins.init(
+			get_tree().root.get_node("World/Player"), 
+			random_vec,
+			i))
 
 func refresh():
 	for child in get_children():

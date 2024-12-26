@@ -246,7 +246,7 @@ graph_offset = Vector2( 0, -52.41 )
 light_mask = 2
 collision_layer = 2
 script = ExtResource( 2 )
-speed = 80
+speed = 60
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 3
@@ -293,8 +293,9 @@ script = ExtResource( 5 )
 
 [node name="Pivot" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="Pivot"]
-z_index = -1
-texture = ExtResource( 6 )
-
 [node name="Tween" type="Tween" parent="."]
+
+[node name="BookSprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+texture = ExtResource( 6 )

@@ -16,4 +16,4 @@ func _physics_process(delta):
 	$Camera2D.offset = lerp(get_node("Camera2D").offset, center_offset / 8, 0.1)
 	$Pivot.position = lerp(get_node("Pivot").position, center_offset.normalized() * 100, 0.25)
 	
-	$Pivot/Sprite.rotation = $Pivot.position.angle() + PI / 2
+	$BookSprite.rotation = $Pivot.position.angle() + PI / 2

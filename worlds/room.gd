@@ -1,4 +1,4 @@
-extends Node2D
+extends YSort
 
 onready var answer_label = $Answer/C/VB/TrueAnswer
 onready var current_answer_label = $Answer/C/VB/CurrentAnswer

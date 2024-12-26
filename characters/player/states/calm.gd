@@ -6,8 +6,8 @@ var num_held: Node2D
 
 func enter():
 	var tw: Tween = player.get_node("Tween")
-	var book = player.get_node("Pivot/Sprite")
-	tw.interpolate_property(book, "position", Vector2(), -book.get_parent().position, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	var book = player.get_node("BookSprite")
+	tw.interpolate_property(book, "position", owner.get_node("Pivot").position, Vector2(), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	tw.interpolate_property(book, "modulate:a", 1, 0, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	tw.start()
 
