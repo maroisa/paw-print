@@ -30,9 +30,10 @@ func move_controller():
 	player.move_and_slide(velocity * player.speed * 10)
 
 func shoot_controller():
+	var bullet_ins = bullet.instance()
 	if Input.is_action_just_pressed("p_action"):
-		var bullet_ins = bullet.instance()
-		add_child(bullet_ins.init(
+		bullet_ins = bullet.instance()
+		player.get_parent().add_child(bullet_ins.init(
 			player.get_node("Pivot").global_position,
 			player.center_offset.normalized()
 		))

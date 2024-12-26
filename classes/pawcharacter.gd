@@ -10,7 +10,7 @@ func _init():
 	self.connect("damaged", self, "damaged")
 
 func damaged(damage: int):
-	health -= 1
+	health -= damage
 	if health <= 0:
 		die()
 

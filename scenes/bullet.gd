@@ -18,7 +18,7 @@ func init(pos: Vector2, vel: Vector2):
 
 func on_hit(body: Node2D):
 	if body is PawCharacter:
-		body.emit_signal("damaged", 1)
+		body.emit_signal("damaged", get_parent().get_node("Player").damage)
 	
 	$AnimatedSprite.play("default")
 	velocity = Vector2()

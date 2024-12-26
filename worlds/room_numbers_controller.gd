@@ -5,6 +5,7 @@ var add_count = 0
 var num_entered: Area2D
 
 onready var player = get_tree().root.get_node("World/Player")
+var unlock = preload("res://scenes/unlock.tscn")
 
 # Object Control
 func on_click():
@@ -37,7 +38,27 @@ func add(val):
 	to_eval += get_parent().jawaban
 	
 	if Math.kalkulasi(to_eval):
-		get_parent().get_node("Lock").queue_free()
+		var lock: TileMap = get_parent().get_node("Lock")
+		
+		var current_cell = Vector2()
+		var isX = false
+		
+		for i in lock.get_used_cells():
+			var unlock_ins = unlock.instance()
+			var lock_position = lock.to_global(lock.map_to_world(i))
+			
+			if current_cell: 
+				isX = current_cell.y == i.y
+				if !isX:
+					if i.y == 2:
+						add_child(unlock_ins.init(lock_position, true))
+						continue
+				
+			else: current_cell = i
+			
+			add_child(unlock_ins.init(lock_position))
+		
+		lock.queue_free()
 		get_parent().answer_label.set("custom_colors/font_color", Color("9ff8ff"))
 		get_parent().get_node("DestructTimer").start()
 		return

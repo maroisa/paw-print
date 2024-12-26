@@ -7,6 +7,8 @@ var player: PawCharacter
 var velocity: Vector2
 var target_position: float
 
+var particle = preload("res://assets/particles/slime_particles.tscn")
+
 onready var rng = RandomNumberGenerator.new()
 onready var animstate = $AnimationTree.get("parameters/playback")
 
@@ -39,6 +41,16 @@ func _physics_process(delta):
 		$AnimationTree.set("parameters/Move/blend_position", velocity)
 	else:
 		move_and_slide(velocity * 220)
+
+func damaged(damage):
+	.damaged(damage)
+	
+	add_child(particle.instance().init())
+	
+	if health <= 0: return
+	$Sprite.modulate = Color(10, 0, 0)
+	yield(get_tree().create_timer(0.08), "timeout")
+	$Sprite.modulate = Color(1, 1, 1)
 
 func die():
 	player = null

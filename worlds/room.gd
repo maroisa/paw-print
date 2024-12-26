@@ -5,6 +5,7 @@ onready var current_answer_label = $Answer/C/VB/CurrentAnswer
 
 var soal: PoolStringArray
 var jawaban: String
+var torch = preload("res://scenes/torch.tscn")
 
 func init(soal: PoolStringArray):
 	self.soal = soal
@@ -22,13 +23,13 @@ func generate_lock(pos: Vector2):
 	var isX = pos.x != 0
 	var selected = Vector2()
 	
+	var torch_ins: Node2D
+	
 	for i in [-4, 3]:
 		selected = Vector2(pos.x * 10, i) if isX else Vector2(i, pos.y * 10)
-		
-		var torch = preload("res://scenes/torch.tscn")
-		torch = torch.instance()
-		torch.global_position = $Lock.to_global($Lock.map_to_world(selected))
-		add_child(torch)
+		torch_ins = torch.instance()
+		torch_ins.global_position = $Lock.to_global($Lock.map_to_world(selected))
+		add_child(torch_ins)
 	
 	for i in range(-3, 3):
 		selected = Vector2(pos.x * 10, i) if isX else Vector2(i, pos.y * 10)
