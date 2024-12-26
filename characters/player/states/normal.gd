@@ -5,6 +5,13 @@ var velocity: Vector2
 
 const bullet = preload("res://scenes/bullet.tscn")
 
+func enter():
+	var tw: Tween = player.get_node("Tween")
+	var book = player.get_node("Pivot/Sprite")
+	tw.interpolate_property(book, "position", -book.get_parent().position, Vector2(), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	tw.interpolate_property(book, "modulate:a", 0, 1, 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	tw.start()
+
 func update():
 	move_controller()
 	shoot_controller()

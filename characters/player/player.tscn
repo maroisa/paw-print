@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://characters/player/player.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=2]
 [ext_resource path="res://classes/pawstatemachine.gd" type="Script" id=3]
 [ext_resource path="res://characters/player/states/normal.gd" type="Script" id=4]
 [ext_resource path="res://characters/player/states/calm.gd" type="Script" id=5]
+[ext_resource path="res://characters/player/player_book.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -291,3 +292,9 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Pivot"]
+z_index = -1
+texture = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
