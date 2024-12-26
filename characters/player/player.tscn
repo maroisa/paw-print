@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://characters/player/player.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=2]
@@ -244,9 +244,6 @@ graph_offset = Vector2( 0, -52.41 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
-[sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 0.662745, 0, 0, 1 )
-
 [node name="Player" type="KinematicBody2D"]
 light_mask = 2
 z_index = 1
@@ -312,28 +309,3 @@ script = ExtResource( 7 )
 
 [node name="Die" type="Node" parent="PawStateMachine"]
 script = ExtResource( 8 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="M" type="MarginContainer" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_constants/margin_right = 50
-custom_constants/margin_top = 50
-custom_constants/margin_left = 50
-custom_constants/margin_bottom = 50
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/M"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 306.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 256, 24 )
-mouse_filter = 2
-size_flags_horizontal = 0
-custom_styles/fg = SubResource( 25 )
-max_value = 20.0
-step = 1.0
-value = 4.0
-percent_visible = false
