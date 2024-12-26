@@ -12,7 +12,7 @@ func generate_enemies(body, area):
 	for i in get_parent().soal:
 		var enemy_ins = enemy.instance()
 		random_vec = Vector2(randi() % 1200 - 600, randi() % 1200 - 600)
-		call_deferred("add_child", enemy_ins.init(get_parent().global_position + random_vec, i))
+		call_deferred("add_child", enemy_ins.init(get_tree().root.get_node("World/Player"), get_parent().global_position + random_vec, i))
 
 func refresh():
 	for child in get_children():

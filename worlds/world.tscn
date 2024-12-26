@@ -14,13 +14,13 @@ z_index = 1
 
 [node name="Light2D" type="Light2D" parent="Player"]
 texture = ExtResource( 6 )
-texture_scale = 1.5
+color = Color( 1, 0.85098, 0.639216, 1 )
 energy = 0.8
 shadow_enabled = true
 shadow_gradient_length = 20.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.333333, 0.333333, 0.333333, 1 )
+color = Color( 0.466667, 0.466667, 0.466667, 1 )
 
 [node name="RoomController" type="Node" parent="."]
 script = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://worlds/room_enemies_controller.gd" type="Script" id=1]
 [ext_resource path="res://worlds/room_numbers_controller.gd" type="Script" id=2]
@@ -6,6 +6,24 @@
 [ext_resource path="res://worlds/room.gd" type="Script" id=4]
 [ext_resource path="res://assets/room0/room0_lock.png" type="Texture" id=5]
 [ext_resource path="res://assets/room0/room0_lock_normalmap.png" type="Texture" id=6]
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( 96, 128, 32, 128, 32, 0, 96, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PoolVector2Array( 96, 128, 32, 128, 32, 0, 96, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PoolVector2Array( 96, 96, 32, 96, 32, 0, 96, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+polygon = PoolVector2Array( 128, 64, 32, 64, 32, 32, 128, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=14]
+polygon = PoolVector2Array( 128, 64, 0, 64, 0, 32, 128, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=15]
+polygon = PoolVector2Array( 96, 64, 0, 64, 0, 32, 96, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -41,7 +59,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 0/autotile/icon_coordinate = Vector2( 0, 0 )
 0/autotile/tile_size = Vector2( 128, 128 )
 0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
+0/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 10 ), Vector2( 0, 1 ), SubResource( 11 ), Vector2( 0, 2 ), SubResource( 12 ), Vector2( 1, 3 ), SubResource( 13 ), Vector2( 2, 3 ), SubResource( 14 ), Vector2( 3, 3 ), SubResource( 15 ) ]
 0/autotile/navpoly_map = [  ]
 0/autotile/priority_map = [  ]
 0/autotile/z_index_map = [  ]
@@ -129,6 +147,7 @@ script = ExtResource( 2 )
 [node name="C" type="CenterContainer" parent="Answer"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 use_top_left = true
 
 [node name="VB" type="HBoxContainer" parent="Answer/C"]
@@ -136,6 +155,7 @@ margin_left = -2.0
 margin_top = -36.0
 margin_right = 2.0
 margin_bottom = 36.0
+mouse_filter = 2
 custom_constants/separation = 4
 
 [node name="CurrentAnswer" type="Label" parent="Answer/C/VB"]
