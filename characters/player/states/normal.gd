@@ -12,6 +12,8 @@ func enter():
 	tw.start()
 
 func update():
+	if owner.health <= 0: machine.travel("Die")
+	
 	move_controller()
 	shoot_controller()
 
@@ -27,6 +29,7 @@ func move_controller():
 	velocity = lerp(velocity, vector, 0.16)
 	
 	owner.get_node("BookSprite").position = owner.get_node("Pivot").position
+	owner.get_node("BookSprite").rotation = owner.get_node("Pivot").position.angle() + PI / 2
 	
 	player.move_and_slide(velocity * player.speed * 10)
 

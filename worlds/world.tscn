@@ -11,7 +11,6 @@ script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 collision_mask = 0
-health = 20
 
 [node name="Light2D" type="Light2D" parent="Player"]
 texture = ExtResource( 6 )

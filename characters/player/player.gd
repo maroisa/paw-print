@@ -16,12 +16,13 @@ func _physics_process(delta):
 	$Camera2D.offset = lerp(get_node("Camera2D").offset, center_offset / 8, 0.1)
 	$Pivot.position = lerp(get_node("Pivot").position, center_offset.normalized() * 100, 0.25)
 	
-	$BookSprite.rotation = $Pivot.position.angle() + PI / 2
+	$CanvasLayer/M/ProgressBar.value = self.health
 
 func damaged(damage: int):
 	.damaged(damage)
 	
-	machine.travel("Attack")
+	machine.travel("Hit")
 
 func die():
-	.die()
+	$CollisionShape2D.set_deferred("disabled", true)
+	$PawStateMachine.travel("Die")
