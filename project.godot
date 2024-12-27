@@ -36,6 +36,7 @@ config/name="Paw's Potion"
 run/main_scene="res://worlds/world.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
