@@ -1,14 +1,15 @@
-extends AnimatedSprite
+extends Node2D
 
 func _ready():
-	self.connect("animation_finished", self, "on_finished")
+	$AnimationPlayer.connect("animation_finished", self, "on_finished")
 
 func init(pos: Vector2, half = false):
 	self.global_position = pos
 	
-	if half: self.play("half")
-	else: self.play("default")
+	if half: $AnimationPlayer.play("unlock_half")
+	else: $AnimationPlayer.play("unlock")
 	
 	return self
 
-func on_finished(): self.queue_free()
+func on_finished(anim_name: String):
+	self.queue_free()
