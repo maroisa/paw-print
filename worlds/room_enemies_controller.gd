@@ -18,10 +18,8 @@ func generate_enemies(body, area):
 			enemy_ins = slime.instance()
 		else: enemy_ins = skeleton.instance()
 		random_vec = Vector2(randi() % 1200 - 600, randi() % 1200 - 600)
-		call_deferred("add_child", enemy_ins.init(
-			get_tree().root.get_node("World/Player"), 
-			random_vec,
-			i))
+		call_deferred("add_child", enemy_ins.init(random_vec, i))
+		
 
 func refresh():
 	for child in get_children():

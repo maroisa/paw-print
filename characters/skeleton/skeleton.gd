@@ -1,22 +1,12 @@
-extends PawCharacter
+extends PawEnemy
 
-var velocity: Vector2 = Vector2.DOWN
-var nilai: String
-var player: PawCharacter
 var active = true
 var particle = preload("res://assets/particles/skeleton_particles.tscn")
 
 onready var animstate = $AnimationTree.get("parameters/playback")
 
-func init(player: PawCharacter, pos: Vector2, nilai: String):
-	self.global_position = pos
-	self.nilai = nilai
-	self.player = player
-	
-	$Timer.connect("timeout", $PawStateMachine/Normal, "refresh")
+func _ready():
 	$AttackArea.connect("body_entered", self, "on_hit")
-	
-	return self
 
 func _physics_process(delta):
 	$AttackArea.rotation = velocity.angle()
