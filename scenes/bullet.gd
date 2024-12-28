@@ -3,30 +3,32 @@ extends Area2D
 var velocity: Vector2
 
 func _ready():
-	$DestructTimer.connect("timeout", self, "on_self_destruct")
-	$AnimatedSprite.connect("animation_finished", self, "on_finished")
+	self.hide()
+	$AnimatedSprite.connect("animation_finished", self, "deactivate")
 	self.connect("body_entered", self, "on_hit")
 
+func activate(spawn_position: Vector2, velocity: Vector2):
+	self.show()
+	self.velocity = velocity
+	self.global_position = spawn_position
+	$AnimatedSprite.playing = false
+	$AnimatedSprite.frame = 0
+	$CollisionShape2D.disabled = false
+
+func deactivate():
+	self.velocity = Vector2()
+	$CollisionShape2D.disabled = true
+	self.hide()
+	get_parent().despawn(self)
+
 func _physics_process(delta):
-	if velocity:
-		self.global_position += velocity * 16
+	if velocity: self.global_position += velocity * 15
 
-func init(pos: Vector2, vel: Vector2):
-	self.global_position = pos
-	self.velocity = vel
-	return self
-
-func on_hit(body: Node2D):
-	if body is PawCharacter:
+func on_hit(body):
+	if body is PawEnemy:
 		$HitSound.pitch_scale = rand_range(0.7, 1.3)
 		$HitSound.play()
-		body.emit_signal("damaged", get_parent().get_node("Player").damage)
+		body.emit_signal("damaged", 1)
 	
 	$AnimatedSprite.play("default")
 	velocity = Vector2()
-
-func on_finished():
-	self.queue_free()
-
-func on_self_destruct():
-	$AnimatedSprite.play("default")
