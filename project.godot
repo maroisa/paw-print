@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Paw's Potion"
-run/main_scene="res://worlds/world.tscn"
+run/main_scene="res://worlds/main_menu.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
@@ -42,6 +42,7 @@ config/windows_native_icon="res://icon.ico"
 
 HUD="*res://globals/hud.tscn"
 Math="*res://globals/math.gd"
+Fader="*res://globals/fader.tscn"
 
 [display]
 

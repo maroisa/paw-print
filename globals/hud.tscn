@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/healthbar_progress.png" type="Texture" id=3]
 
 [node name="HUD" type="CanvasLayer"]
+visible = false
 script = ExtResource( 1 )
 
 [node name="M" type="MarginContainer" parent="."]

@@ -10,5 +10,6 @@ const soal = [
 
 
 func _ready():
+	HUD.init()
 	randomize()
 	$RoomController.init(soal)

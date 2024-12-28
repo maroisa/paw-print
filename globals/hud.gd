@@ -5,12 +5,16 @@ var cursor_move = preload("res://assets/cursor_move.png")
 
 var player
 
-func _ready():
+func init():
+	self.show()
+	
 	Input.set_custom_mouse_cursor(cursor_cross, Input.CURSOR_ARROW, Vector2(32, 32))
 	Input.set_custom_mouse_cursor(cursor_move, Input.CURSOR_MOVE, Vector2(32, 32))
 	
 	player = get_tree().root.get_node("World/Player")
 	$M/Healthbar.max_value = player.health
+	
+	refresh()
 
 func refresh():
 	if !player: return

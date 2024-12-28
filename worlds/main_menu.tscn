@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/wood_npr.png" type="Texture" id=1]
+[ext_resource path="res://assets/background.png" type="Texture" id=2]
+[ext_resource path="res://assets/font/upheaval_small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://worlds/main_menu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0, 0, 0, 0.0980392 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+
+[node name="M" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 200
+custom_constants/margin_top = 100
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 100
+
+[node name="NPR" type="NinePatchRect" parent="M"]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 1080.0
+margin_bottom = 620.0
+texture = ExtResource( 1 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="C" type="CenterContainer" parent="M/NPR"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VB" type="VBoxContainer" parent="M/NPR/C"]
+margin_left = 330.0
+margin_top = 170.0
+margin_right = 550.0
+margin_bottom = 350.0
+custom_constants/separation = 32
+
+[node name="PlayButton" type="Button" parent="M/NPR/C/VB"]
+margin_right = 220.0
+margin_bottom = 74.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.278431, 0.12549, 0.0588235, 1 )
+custom_colors/font_color_hover = Color( 0.278431, 0.12549, 0.0588235, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="M/NPR/C/VB"]
+margin_top = 106.0
+margin_right = 220.0
+margin_bottom = 180.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.278431, 0.12549, 0.0588235, 1 )
+custom_colors/font_color_hover = Color( 0.278431, 0.12549, 0.0588235, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "Exit"
