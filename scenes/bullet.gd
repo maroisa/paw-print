@@ -18,6 +18,8 @@ func init(pos: Vector2, vel: Vector2):
 
 func on_hit(body: Node2D):
 	if body is PawCharacter:
+		$HitSound.pitch_scale = rand_range(0.7, 1.3)
+		$HitSound.play()
 		body.emit_signal("damaged", get_parent().get_node("Player").damage)
 	
 	$AnimatedSprite.play("default")

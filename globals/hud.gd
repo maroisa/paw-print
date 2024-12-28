@@ -10,8 +10,9 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_move, Input.CURSOR_MOVE, Vector2(32, 32))
 	
 	player = get_tree().root.get_node("World/Player")
+	$M/Healthbar.max_value = player.health
 
 func refresh():
 	if !player: return
 	
-	$M/ProgressBar.value = player.health
+	$M/Healthbar.value = player.health

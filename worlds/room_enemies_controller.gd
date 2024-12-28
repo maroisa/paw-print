@@ -34,6 +34,7 @@ func refresh():
 		player.machine.state.connect("clicked", $"../Numbers", "on_click")
 	
 	get_parent().answer_label.text = get_parent().jawaban
+	get_parent().get_node("GetItemSound").play()
 	
 	for child in get_children():
 		var num_ins = number.instance().init(child.global_position, child.nilai)

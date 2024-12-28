@@ -56,7 +56,7 @@ func damaged(damage):
 	
 	if health <= 0: return
 	$Sprite.modulate = Color(10, 0, 0)
-	yield(get_tree().create_timer(0.08), "timeout")
+	yield(get_tree().create_timer(0.05), "timeout")
 	$Sprite.modulate = Color(1, 1, 1)
 
 func die():

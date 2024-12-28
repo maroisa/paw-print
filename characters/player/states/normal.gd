@@ -19,11 +19,14 @@ func update():
 
 func move_controller():
 	vector = Input.get_vector("p_left", "p_right", "p_up", "p_down")
+	var sound: AudioStreamPlayer2D = owner.get_node("WalkSound")
 	
 	if vector:
+		if !sound.playing: sound.play()
 		player.velocity_static = vector
 		player.animstate.travel("Walk")
 	else:
+		if sound.playing: sound.stop()
 		player.animstate.travel("Idle")
 	
 	velocity = lerp(velocity, vector, 0.16)

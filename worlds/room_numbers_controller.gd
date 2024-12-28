@@ -29,6 +29,8 @@ func set_cursor(cursor):
 # Number handler
 
 func add(val):
+	get_parent().get_node("UnlockSound").play()
+	
 	jawaban = str(Math.kalkulasi(jawaban + val))
 	get_parent().current_answer_label.text = jawaban
 	add_count += 1
@@ -38,6 +40,7 @@ func add(val):
 	to_eval += get_parent().jawaban
 	
 	if Math.kalkulasi(to_eval):
+		get_parent().get_node("CatSuccess").play()
 		var lock: TileMap = get_parent().get_node("Lock")
 		
 		var current_cell = Vector2()
@@ -64,6 +67,7 @@ func add(val):
 		return
 	
 	if add_count >= get_child_count():
+		get_parent().get_node("CatFailed").play()
 		for i in get_children(): i.queue_free()
 		
 		jawaban = "0"

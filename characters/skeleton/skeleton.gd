@@ -4,7 +4,7 @@ var velocity: Vector2 = Vector2.DOWN
 var nilai: String
 var player: PawCharacter
 var active = true
-var particle = preload("res://assets/particles/slime_particles.tscn")
+var particle = preload("res://assets/particles/skeleton_particles.tscn")
 
 onready var animstate = $AnimationTree.get("parameters/playback")
 

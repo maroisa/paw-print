@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://worlds/room_enemies_controller.gd" type="Script" id=1]
 [ext_resource path="res://worlds/room_numbers_controller.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://worlds/room.gd" type="Script" id=4]
 [ext_resource path="res://assets/room0/room0_lock.png" type="Texture" id=5]
 [ext_resource path="res://assets/room0/room0_lock_normalmap.png" type="Texture" id=6]
+[ext_resource path="res://assets/sounds/get item.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/menu open.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/cat 2.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/cat.mp3" type="AudioStream" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=10]
 polygon = PoolVector2Array( 96, 128, 32, 128, 32, 0, 96, 0 )
@@ -173,3 +177,16 @@ custom_fonts/font = ExtResource( 3 )
 [node name="DestructTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="GetItemSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="UnlockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 3.0
+
+[node name="CatSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="CatFailed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )

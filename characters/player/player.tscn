@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://characters/player/player.png" type="Texture" id=1]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://characters/player/player_book.png" type="Texture" id=6]
 [ext_resource path="res://characters/player/states/hit.gd" type="Script" id=7]
 [ext_resource path="res://characters/player/states/die.gd" type="Script" id=8]
+[ext_resource path="res://assets/sounds/walk.mp3" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -285,9 +286,9 @@ parameters/playback = SubResource( 12 )
 parameters/Idle/blend_position = Vector2( 0, 1 )
 parameters/Walk/blend_position = Vector2( 0, 1 )
 
-[node name="Pivot" type="Node2D" parent="."]
-
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Pivot" type="Node2D" parent="."]
 
 [node name="BookSprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -309,3 +310,7 @@ script = ExtResource( 7 )
 
 [node name="Die" type="Node" parent="PawStateMachine"]
 script = ExtResource( 8 )
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.0
