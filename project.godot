@@ -50,7 +50,7 @@ config/windows_native_icon="res://icon.ico"
 
 HUD="*res://globals/hud.tscn"
 Math="*res://globals/math.gd"
-Fader="*res://globals/fader.tscn"
+Screen="*res://globals/screen.tscn"
 
 [display]
 

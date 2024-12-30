@@ -58,6 +58,7 @@ corner_radius_bottom_left = 16
 corner_detail = 1
 
 [node name="MainMenu" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="BG" type="TextureRect" parent="."]

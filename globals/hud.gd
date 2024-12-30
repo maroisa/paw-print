@@ -5,7 +5,7 @@ var cursor_move = preload("res://assets/cursor_move.png")
 
 var player
 
-func init():
+func activate():
 	self.show()
 	
 	Input.set_custom_mouse_cursor(cursor_cross, Input.CURSOR_ARROW, Vector2(32, 32))
@@ -16,7 +16,9 @@ func init():
 	
 	refresh()
 
+func deactivate():
+	player = null
+
 func refresh():
-	if !player: return
-	
-	$M/Healthbar.value = player.health
+	if player != null:
+		$M/Healthbar.value = player.health

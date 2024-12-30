@@ -11,6 +11,7 @@ const soal = [
 onready var bullet_pool = $BulletPool
 
 func _ready():
-	HUD.init()
+	HUD.activate()
+	Screen.refresh()
 	randomize()
 	$RoomController.init(soal)
