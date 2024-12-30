@@ -25,7 +25,6 @@ func generate_rooms(soal: PoolStringArray):
 	while placed_room[-1] + random_vector in placed_room:
 		random_vector = vectors[randi() % 4]
 	
-	
 	for i in range(-random_size.x, random_size.x):
 		i = i + placed_room[-1].x * 20
 		for ii in range(-random_size.y, random_size.y):
@@ -44,6 +43,10 @@ func generate_rooms(soal: PoolStringArray):
 		
 		generate_hallway(random_vector)
 		room_ins.generate_lock(random_vector)
+	else:
+		var last_room = preload("res://worlds/last_room.tscn").instance()
+		last_room.global_position = placed_room[-1] * 2560
+		add_child(last_room)
 	
 	generate_hallway(-last_vector)
 	
