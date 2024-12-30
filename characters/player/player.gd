@@ -25,5 +25,6 @@ func damaged(damage: int):
 	machine.travel("Hit")
 
 func die():
+	get_parent().get_node("Backsound").playing = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	$PawStateMachine.travel("Die")
