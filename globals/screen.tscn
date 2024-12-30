@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://globals/screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/tutor2.png" type="Texture" id=2]
 [ext_resource path="res://assets/tutor.png" type="Texture" id=3]
 [ext_resource path="res://assets/dead.png" type="Texture" id=4]
-[ext_resource path="res://assets/End.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -126,13 +125,3 @@ anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 4 )
 stretch_mode = 4
-
-[node name="EndingRect" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-mouse_default_cursor_shape = 3
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 7

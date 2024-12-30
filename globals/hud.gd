@@ -19,6 +19,7 @@ func activate():
 func deactivate():
 	player = null
 	Input.set_custom_mouse_cursor(null)
+	self.hide()
 
 func refresh():
 	if player != null:

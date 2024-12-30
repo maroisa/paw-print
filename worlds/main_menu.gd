@@ -3,6 +3,7 @@ extends CanvasLayer
 const world = preload("res://worlds/world.tscn")
 
 func _ready():
+	Screen.fade_out()
 	$M/VB/StartButton.connect("pressed", self, "on_play")
 	$M/VB/FullScreenButton.connect("toggled", self, "on_fullscreen")
 	$M/VB/ExitButton.connect("pressed", self, "on_exit")

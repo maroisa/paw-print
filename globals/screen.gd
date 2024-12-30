@@ -2,7 +2,6 @@ extends CanvasLayer
 
 func _ready():
 	get_tree().paused = true
-	fade_out()
 
 func fade_in():
 	$AnimationPlayer.play("black")
@@ -27,20 +26,8 @@ func tutor():
 func refresh():
 	fade_out()
 	$DieRect.modulate.a = 0
-	$EndingRect.modulate.a = 0
 
 func die_screen():
 	fade_in()
 	yield($AnimationPlayer, "animation_finished")
 	create_tween().tween_property($DieRect, "modulate:a", 1, 1)
-
-func end():
-	fade_in()
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	yield(get_tree().create_timer(1), "timeout")
-	create_tween().tween_property($EndingRect, "modulate:a", 1, 1)
-	yield(get_tree().create_timer(3), "timeout")
-	yield(create_tween().tween_property($EndingRect, "modulate:a", 0, 1), "finished")
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	fade_out()
-	get_tree().change_scene("res://worlds/main_menu.tscn")
