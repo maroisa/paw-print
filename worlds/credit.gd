@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 var roll_messages = [
-	"Game Designer:\n - Naufal H\n - Alex",
-	"Artist:\n - Naufal H",
-	"Sound Engineer:\n - Alex",
-	"Programmer:\n - Ahmad R"
+	"Game Designer:\n - Naufal H.\n - Christian Alex",
+	"Artist:\n - Naufal H.",
+	"Sound Engineer:\n - Christian Alex",
+	"Programmer:\n - Ahmad R."
 ]
 
 
