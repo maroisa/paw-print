@@ -3,8 +3,8 @@ extends CanvasLayer
 const world = preload("res://worlds/world.tscn")
 
 func _ready():
-	$M/NPR/C/VB/ExitButton.connect("pressed", self, "on_exit")
-	$M/NPR/C/VB/PlayButton.connect("pressed", self, "on_play")
+	$M/VB/StartButton.connect("pressed", self, "on_play")
+	$M/VB/ExitButton.connect("pressed", self, "on_exit")
 
 func on_exit():
 	get_tree().quit()

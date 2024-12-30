@@ -3,7 +3,7 @@ extends PawState
 var vector: Vector2
 var velocity: Vector2
 
-const bullet = preload("res://scenes/bullet.tscn")
+onready var shoot_cooldown = owner.get_node("ShootCooldownTimer")
 
 func enter():
 	var tw: Tween = player.get_node("Tween")
@@ -37,10 +37,6 @@ func move_controller():
 	player.move_and_slide(velocity * player.speed * 10)
 
 func shoot_controller():
-	var bullet_ins = bullet.instance()
-	if Input.is_action_just_pressed("p_action"):
-		bullet_ins = bullet.instance()
-		player.get_parent().add_child(bullet_ins.init(
-			player.get_node("Pivot").global_position,
-			player.center_offset.normalized()
-		))
+	if Input.is_action_pressed("p_action") && shoot_cooldown.is_stopped():
+		shoot_cooldown.start()
+		player.get_parent().bullet_pool.spawn(player.get_node("Pivot").global_position, player.center_offset.normalized())

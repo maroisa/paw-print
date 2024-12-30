@@ -51,3 +51,4 @@ frames = SubResource( 6 )
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -6.0

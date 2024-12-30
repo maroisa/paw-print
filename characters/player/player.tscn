@@ -314,3 +314,7 @@ script = ExtResource( 8 )
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -6.0
+
+[node name="ShootCooldownTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

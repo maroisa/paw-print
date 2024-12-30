@@ -2,6 +2,8 @@ extends YSort
 
 var number = preload("res://scenes/number.tscn")
 
+
+
 var slime = preload("res://characters/slime/slime.tscn")
 var skeleton = preload("res://characters/skeleton/skeleton.tscn")
 
